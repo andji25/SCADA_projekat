@@ -41,8 +41,25 @@ namespace Modbus.ModbusFunctions
         /// <inheritdoc />
         public override Dictionary<Tuple<PointType, ushort>, ushort> ParseResponse(byte[] response)
         {
-            //TO DO: IMPLEMENT
-            throw new NotImplementedException();
+            Dictionary<Tuple<PointType, ushort>, ushort> dictionary = new Dictionary<Tuple<PointType, ushort>, ushort>();
+            ModbusReadCommandParameters readF = this.CommandParameters as ModbusReadCommandParameters;
+            ushort address = readF.StartAddress; // izvucena adresa
+            ushort value; // ta vrednost
+            int count = 0; // potrebno za uslov prekida petlje
+            for (int i = 0; i < response[8]; i++) // 1.petlja po bajtu
+            {
+                byte dataPart = response[9 + i];
+                for (int j = 0; j < 8; j++) // sad idemo bit po bit
+                {
+                    value = (ushort)(dataPart & 1); // izvlacimo 1 bit, to je vrednost i to ide u recnik
+                    dataPart >>= 1;
+                    dictionary.Add(new Tuple<PointType, ushort>(PointType.DIGITAL_INPUT, address++), value);
+                    count++;
+                    if (count == readF.Quantity) // treba nam raniji izlazak iz petlje
+                        break;
+                }
+            }
+            return dictionary;
         }
     }
 }

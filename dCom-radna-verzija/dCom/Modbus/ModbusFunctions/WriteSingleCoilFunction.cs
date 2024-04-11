@@ -41,8 +41,18 @@ namespace Modbus.ModbusFunctions
         /// <inheritdoc />
         public override Dictionary<Tuple<PointType, ushort>, ushort> ParseResponse(byte[] response)
         {
-            //TO DO: IMPLEMENT
-            throw new NotImplementedException();
+            Dictionary<Tuple<PointType, ushort>, ushort> dictionary = new Dictionary<Tuple<PointType, ushort>, ushort>();
+
+            ushort address = BitConverter.ToUInt16(response, 8);
+            address = (ushort)IPAddress.NetworkToHostOrder((short)address);
+
+            ushort value;
+            value = BitConverter.ToUInt16(response, 10);
+            value = (ushort)IPAddress.NetworkToHostOrder((short)value);
+
+            dictionary.Add(new Tuple<PointType, ushort>(PointType.DIGITAL_OUTPUT, address), value);
+
+            return dictionary;
         }
     }
 }

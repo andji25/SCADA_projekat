@@ -41,8 +41,37 @@ namespace Modbus.ModbusFunctions
         /// <inheritdoc />
         public override Dictionary<Tuple<PointType, ushort>, ushort> ParseResponse(byte[] response)
         {
-            //TO DO: IMPLEMENT
-            throw new NotImplementedException();
+            /*
+            Dictionary parseResponse
+            prvo napravimo recnik point type - digital output a ovaj ushort je adresa
+            zatim preuzem adresu
+            2 petlje - prva po bajtu - bytecount->response[8] nam to govori, a druga ide po bitima
+            response[9+i] - data deo
+            kako iz bajta da izvucemo 1 bit ????????????? 
+            kad to uradimo, cast u ushort i to nam je neka promenljiva (vrednost) to ide u recnik recnik.add(<PT.DO>, adresa++, promenljiva vrednost)
+            treba i uslov da se izadje iz petlje jer nama treba tacno 10 bita, a ovako se petlja ukupno izvrsi 16puta 
+
+            */
+            Dictionary<Tuple<PointType, ushort>, ushort> dictionary = new Dictionary<Tuple<PointType, ushort>, ushort>();
+            ModbusReadCommandParameters readF = this.CommandParameters as ModbusReadCommandParameters;
+            ushort address = readF.StartAddress; // izvucena adresa
+            ushort value; // ta vrednost
+            int count = 0; // potrebno za uslov prekida petlje
+            for (int i = 0; i < response[8]; i++) // 1.petlja po bajtu
+            {
+                byte dataPart = response[9 + i];
+                for (int j = 0; j < 8; j++) // sad idemo bit po bit
+                {
+                    value = (ushort)(dataPart & 0x1); // izvlacimo 1 bit, to je vrednost i to ide u recnik
+                    dataPart >>= 1;
+                    dictionary.Add(new Tuple<PointType, ushort>(PointType.DIGITAL_OUTPUT, address++), value);
+                    count++;
+                    if (count == readF.Quantity) // treba nam raniji izlazak iz petlje
+                        break;
+                }
+
+            }
+            return dictionary;
         }
     }
 }
