@@ -49,7 +49,7 @@ namespace Modbus.ModbusFunctions
             {
                 value = BitConverter.ToUInt16(response, (i + 9));
                 value = (ushort)IPAddress.HostToNetworkOrder((short)value);
-                dictionary.Add(new Tuple<PointType, ushort>(PointType.ANALOG_OUTPUT, address++), value);
+                dictionary.Add(new Tuple<PointType, ushort>(PointType.ANALOG_INPUT, address++), value);
             }
             return dictionary;
         }
