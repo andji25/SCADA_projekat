@@ -1,0 +1,9 @@
+C:\Users\Korisnik\Documents\ftn\6.sem\akvizicioni\SCADA_projekat\dCom-radna-verzija\dCom\Modbus\bin\Debug\Modbus.dll
+C:\Users\Korisnik\Documents\ftn\6.sem\akvizicioni\SCADA_projekat\dCom-radna-verzija\dCom\Modbus\bin\Debug\Modbus.pdb
+C:\Users\Korisnik\Documents\ftn\6.sem\akvizicioni\SCADA_projekat\dCom-radna-verzija\dCom\Modbus\bin\Debug\Common.dll
+C:\Users\Korisnik\Documents\ftn\6.sem\akvizicioni\SCADA_projekat\dCom-radna-verzija\dCom\Modbus\bin\Debug\Common.pdb
+C:\Users\Korisnik\Documents\ftn\6.sem\akvizicioni\SCADA_projekat\dCom-radna-verzija\dCom\Modbus\obj\Debug\Modbus.csproj.AssemblyReference.cache
+C:\Users\Korisnik\Documents\ftn\6.sem\akvizicioni\SCADA_projekat\dCom-radna-verzija\dCom\Modbus\obj\Debug\Modbus.csproj.CoreCompileInputs.cache
+C:\Users\Korisnik\Documents\ftn\6.sem\akvizicioni\SCADA_projekat\dCom-radna-verzija\dCom\Modbus\obj\Debug\Modbus.csproj.CopyComplete
+C:\Users\Korisnik\Documents\ftn\6.sem\akvizicioni\SCADA_projekat\dCom-radna-verzija\dCom\Modbus\obj\Debug\Modbus.dll
+C:\Users\Korisnik\Documents\ftn\6.sem\akvizicioni\SCADA_projekat\dCom-radna-verzija\dCom\Modbus\obj\Debug\Modbus.pdb

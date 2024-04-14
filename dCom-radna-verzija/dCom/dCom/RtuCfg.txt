@@ -2,9 +2,9 @@ STA 126
 TCP 62274
 
 
-DO_REG  1 2200   0  0      1     0  DO  @FirstPowerSwitch
-DO_REG  1 2201   0  0      1     0  DO  @SecondPowerSwitch
-DI_REG  3 2300  0  0      1     0  DI  @USB123
-DI_REG  1 2303  0  0      1     0  DI  @Socket
-DI_REG  1 2304  0  0      1     0  DI  @USBC
-HR_INT  1 2400  0  0   4095  1200  AO  @Capacity
+DO_REG  1 2200   0  0      1     0  DO  @FirstPowerSwitch 2
+DO_REG  1 2201   0  0      1     0  DO  @SecondPowerSwitch 2
+DI_REG  3 2300  0  0      1     0  DI  @USB123 2
+DI_REG  1 2303  0  0      1     0  DI  @Socket 2
+DI_REG  1 2304  0  0      1     0  DI  @USBC 2
+HR_INT  1 2400  0  0   4095  1200  AO  @Capacity 4
